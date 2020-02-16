@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    command: npm dev
+    ports:
+      - "8040:8040"
+    volumes:
+      - .:/usr/app
