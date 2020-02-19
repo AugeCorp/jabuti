@@ -1,4 +1,3 @@
-routes = require('../../config/routes.config')
 const UserController = require('../../app/controller/usuario');
 
 routes.get('/user', UserController.index);
