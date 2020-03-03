@@ -8,3 +8,11 @@ services:
       - "8040:8040"
     volumes:
       - .:/usr/app
+
+  db:
+    image: 'mongo'
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data/db:/data/db
