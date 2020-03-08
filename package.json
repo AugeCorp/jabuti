@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "consign": "^0.1.6",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",

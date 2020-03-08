@@ -1,5 +1,9 @@
 routes = require('../config/routes.config')
+const auth = require('../middleware/auth')
+// Sem middleware
+    require("./usuario/usuario.routes")(routes)
 
-require("./usuario/usuario.routes")
+// com Middleware
+    routes.use(auth)
 
 module.exports = routes;
