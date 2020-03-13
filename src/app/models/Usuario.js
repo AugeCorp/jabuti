@@ -1,68 +1,41 @@
-const mongoose = require('../../database/index')
+const mongoose = require('mongoose')
 
-const UserSchema = new mongoose.Schema({
-    email: String,
-    password: String,
+const UserSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
     googleAccount: { 
-        type: Boolean, 
-        default: false
+      type: Boolean, 
+      default: false
     },
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     income: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true
     },
-    activeAccount: Boolean,
     lastAccess: { 
-        type: Date, 
-        default: Date.now
+      type: Date, 
+      default: Date.now
     },
-    // tokenVerification: {
-    //   type: String,
-    //   required: true
-    // },
-    economia: {
-        gastos: {
-            gastoUnico: {
-                formaPag: {
-                    dinheiro: Boolean,
-                    credito: Boolean,
-                    parcelado: Boolean,
-                    parcelas: Number
-                },
-                importancia: String,
-                descricao: String,
-                preco: Number,
-                categoria: String,
-                validade: String,
-                tipo: String,
-            },
-            objetivoConsumo: {
-                descricao: String,
-                preco: Number,
-                categoria: Number
-            }
-        },
-        renda: {
-            tipo: String,
-            valor: Number
-        }
+    activeAccount: {
+      type: Boolean,
+      required: true
     },
-    historico: {
-        anual: {
-            mensal: {
-                receita: Number
-            }
-        }
+    tokenVerification: {
+      type: String,
+      required: true
     },
-    metas: {
-        tipo: String
-    }
-});
-
-UserSchema.set('timestamps', true)
+  }
+);
 
 module.exports = mongoose.model('User', UserSchema);
+
