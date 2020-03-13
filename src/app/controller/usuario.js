@@ -22,8 +22,6 @@ module.exports = {
     },
     async store(req, res) {
         try {
-
-            response = await User.create(req.body)
             
             return res.status(200).send(response)
 
