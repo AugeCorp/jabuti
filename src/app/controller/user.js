@@ -92,7 +92,7 @@ module.exports = {
         }
     },
 
-    async recuperacao(req, res) {
+    async recovery(req, res) {
 
         const { email } = req.body
 
@@ -117,7 +117,37 @@ module.exports = {
         }
     },
 
-    async delete() {
+    async delete(req, res) {
         
+        const { email } = req.body
+        const password = req.headers.authorization
+        const Access = require('../secure/secrets.json')
+
+        try {
+            if(!email)
+                return res.status(404).send({ error: "Email not declared" })
+
+            if(!Access)
+                return res.status(401).send({ error : "Administrator access required!"})
+            
+            jwt.sign(Access.administrator, password)
+
+            jwt.verify(Access.administrator, password, async (err, decoded) => {
+                if(err)
+                    return res.status(401).send({ error: "Access denied!", err })
+                
+                const { _id } = await User.findOne({ email })
+
+                if(!_id)
+                    return res.status(404).send("User not found")
+
+                // User.findByIdAndUpdate({_id}, {activeAccount: false})
+                return res.send({ teste: decoded})
+            })
+                
+        } catch (err) {
+            
+        } 
+
     }
 }
