@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:10.19.0-stretch-slim
 
 WORKDIR /usr/app
 
@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8040
 
-CMD ["npm","run","dev"]
+CMD ["npm","run", "dev"]
