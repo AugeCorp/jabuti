@@ -4,7 +4,7 @@
     "consign": "^0.1.6",
     "express": "^4.17.1",
     "mongoose": "^5.8.7",
-    "nodemailer": "^6.4.4",
+    "nodemailer": "^6.4.16",
     "nodemon": "^2.0.2",
     "sequelize": "^5.21.3"
   },
